@@ -15,5 +15,7 @@ branches:
   only:
     - master
     - working
+    - feaure
+    - revert 
+
     - new feature
-    
