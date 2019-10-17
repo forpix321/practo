@@ -10,6 +10,10 @@
  * Copyright IBM Corporation 2019
  */
 
+def getGitBranchName() {
+        return scm.branches[0].name
+            }
+
 def isPullRequest = env.CHANGE_ID ? true : false
 
 // only when building on these branches, docs will be updated
@@ -68,9 +72,7 @@ node {
 
     stage('test') {
         
-        def getGitBranchName() {
-        return scm.branches[0].name
-            }
+        
         try {
             def branch = getGitBranchName
             if (isPullRequest) {
