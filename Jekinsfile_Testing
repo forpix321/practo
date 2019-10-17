@@ -67,8 +67,12 @@ node {
     }
 
     stage('test') {
+        
+        def getGitBranchName() {
+        return scm.branches[0].name
+            }
         try {
-            def branch = env.BRANCH_NAME
+            def branch = getGitBranchName
             if (isPullRequest) {
               branch = env.CHANGE_BRANCH
             }
