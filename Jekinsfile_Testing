@@ -62,7 +62,7 @@ node {
         checkout scm
 
         // check if it's pull request
-        echo "Current branch is ${env.BRANCH_NAME}"
+        echo "Current branch is" getGitBranchName()
         echo 'Pulling...' + getGitBranchName()
         
         if (isPullRequest) {
@@ -127,7 +127,7 @@ node {
     }
 
     stage('render-doc') {
-        if (!DOCS_UPDATE_BRANCHES.contains(env.BRANCH_NAME)) {
+        if (!DOCS_UPDATE_BRANCHES.contains( getGitBranchName())) {
             echo "Skip building documentation for branch ${env.BRANCH_NAME}"
             return
         }
@@ -166,7 +166,7 @@ node {
         }
     }
 
-    stage('done') {
+   /* stage('done') {
       // send out notification
       emailext body: "Job \"${env.JOB_NAME}\" build #${env.BUILD_NUMBER} success.\n\nCheck detail: ${env.BUILD_URL}" ,
           subject: "[Jenkins] Job \"${env.JOB_NAME}\" build #${env.BUILD_NUMBER} success",
@@ -176,7 +176,7 @@ node {
             [$class: 'DevelopersRecipientProvider'],
             [$class: 'UpstreamComitterRecipientProvider']
           ]
-    }
+    }*/
 
   } catch (err) {
     currentBuild.result = 'FAILURE'
