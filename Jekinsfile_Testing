@@ -103,7 +103,7 @@ node {
         }
         /* finally {
             // publish any test results found
-            junit allowEmptyResults: true, testResults: '**/test-results/**/*.xml'
+            junit allowEmptyResults: true, testResults: '**
 
             // publish test html report
             publishHTML(target: [
