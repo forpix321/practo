@@ -63,7 +63,7 @@ node {
 
         // check if it's pull request
         echo "Current branch is ${env.BRANCH_NAME}"
-        echo 'Pulling...' + env.BRANCH_NAME
+        echo 'Pulling...' + getGitBranchName()
         
         if (isPullRequest) {
           echo "This is a pull request: merge ${env.CHANGE_BRANCH} into ${env.CHANGE_TARGET}"
