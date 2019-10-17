@@ -17,13 +17,13 @@ def getGitBranchName() {
 def isPullRequest = env.CHANGE_ID ? true : false
 
 // only when building on these branches, docs will be updated
-def DOCS_UPDATE_BRANCHES = ['master', 'classes']
+def DOCS_UPDATE_BRANCHES = ['master', 'Testing']
 
 // constants will be used for testing
-def JENKINS_CREDENTIAL     = 'jenkins-credential'
-def GITHUB_USERNAME        = 'Zowe Robot'
-def GITHUB_EMAIL           = 'zowe.robot@gmail.com'
-def GITHUB_CREDENTIAL      = 'zowe-robot-github'
+//def JENKINS_CREDENTIAL     = 'jenkins-credential'
+def GITHUB_USERNAME        = 'forpix'
+def GITHUB_EMAIL           = 'forpix321@gmail.com'
+def GITHUB_CREDENTIAL      = 'GITHUB_CREDENTIAL'
 /*  def NPM_USERNAME           = 'giza-jenkins'
     def NPM_EMAIL              = 'giza-jenkins@gmail.com'
     def NPM_CREDENTIAL         = 'GizaArtifactoryEncoded'
@@ -74,7 +74,7 @@ node {
         
         
         try {
-            def branch = getGitBranchName
+            def branch = getGitBranchName()
             if (isPullRequest) {
               branch = env.CHANGE_BRANCH
             }
